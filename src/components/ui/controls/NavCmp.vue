@@ -14,9 +14,11 @@
 import { ref } from 'vue'
 import TabCmp from '../TabCmp.vue';
 
-import { tabs } from '/src/assets/data/conf.js'
-
     export default {
+        props: {
+            tabs: { type: Object, default: () => { return {} } }
+        },
+
         components: {
             TabCmp
         },
@@ -25,7 +27,7 @@ import { tabs } from '/src/assets/data/conf.js'
             const active = ref( '1' )
 
             return {
-                tabs,
+                // tabs,
                 active
             }
         }

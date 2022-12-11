@@ -1,7 +1,8 @@
 <template>
     <div class="user-cmp">
         <header class="user-cmp-header">
-            <nav-cmp @set-active-tab="setActiveTab" />
+            <nav-cmp :tabs="tabs" 
+                @set-active-tab="setActiveTab" />
             <img class="logout-img" 
                 src="@/assets/img/open-exit.svg" alt="Logout" 
                 @click="this.$store.commit( 'SET_AUTH_STATE', false )">
@@ -19,11 +20,12 @@
 <script>
 import { ref } from 'vue'
 import NavCmp from '../ui/controls/NavCmp.vue';
+import { tabs, applications } from '/src/assets/data/conf.js'
 
-    import ServiceCmp from '../directions/ServiceCmp.vue';
-    import SalesCmp from '../directions/SalesCmp.vue';
-    import WarehouseCmp from '../directions/WarehouseCmp.vue';
-    import AnalyticsCmp from '../directions/AnalyticsCmp.vue';
+import ServiceCmp from '../directions/ServiceCmp.vue';
+import SalesCmp from '../directions/SalesCmp.vue';
+import WarehouseCmp from '../directions/WarehouseCmp.vue';
+import AnalyticsCmp from '../directions/AnalyticsCmp.vue';
 
     export default {
         components: {
@@ -36,11 +38,11 @@ import NavCmp from '../ui/controls/NavCmp.vue';
         },  
 
         methods: {
-            setActiveTab( data ) {
-                for ( let i of Object.keys( this.directions ) ) {
-                    this.directions[ i ] = false
+            setActiveTab( directionTab ) {
+                for ( let direction of Object.keys( this.directions ) ) {
+                    this.directions[ direction ] = false
                 }
-                this.directions[ data ] = true
+                this.directions[ directionTab ] = true
             }
         },
 
@@ -53,7 +55,9 @@ import NavCmp from '../ui/controls/NavCmp.vue';
             })
 
             return  {
-                directions
+                directions,
+                tabs,
+                applications
             }
         }
     }
@@ -65,17 +69,14 @@ import NavCmp from '../ui/controls/NavCmp.vue';
 .user-cmp {
     height: 100vh;
     width: 100vw;
-    // background-color: rgb(180, 214, 148);
 
     &-header {
         @include flexRow( space-between, center );
         height: 50px;
-        width: 100%;
         background-color: $main-color;
 
         @media screen and ( max-width: 540px ) {
             @include flexRow( center, center );
-            width: 100%;
         }
     }
 
