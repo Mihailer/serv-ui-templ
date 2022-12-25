@@ -31,7 +31,7 @@ import { orderFieldSections } from '/src/assets/data/conf.js'
 
         methods: {
             getOrderData( orderData ) {
-                console.log( orderData );
+                this.$emit( 'emit-order-data', orderData )
             }
         },
 

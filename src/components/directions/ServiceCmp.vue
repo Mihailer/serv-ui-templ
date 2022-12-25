@@ -3,6 +3,8 @@
         <add-new-order v-if="addOrder"
             @close-new-modal="closeNewModal" />
 
+        <order-data :currentOrder="currentOrder" v-if="orderModal" @close-order-modal="closeOrderModal" />    
+
         <div class="service-cmp-control">
             <div class="backdrop">
                 <button-cmp v-for="( btn, btnIndex ) in controlsBtn" 
@@ -19,7 +21,8 @@
         <div class="service-cmp-orders-section">
             <service-order-cmp v-for="( order, orderIdx ) in orderData" 
                 :key="orderIdx" 
-                :order="order" />
+                :order="order"
+                @emit-order-data="emitOrderData" />
         </div>
     </div>
 </template>
@@ -31,6 +34,7 @@ import ButtonCmp from '../ui/ButtonCmp.vue'
 import DefaultInputCmp from '../ui/DefaultInputCmp.vue';
 
 import AddNewOrder from '../modals/AddNewOrder.vue';
+import OrderData from '../modals/OrderData.vue';
 import ServiceOrderCmp from './serviceCmp/ServiceOrderCmp.vue';
 
 import { orderData } from '/src/assets/data/mockData.js'
@@ -41,11 +45,15 @@ import { controlsBtn } from '/src/assets/data/conf.js'
             ButtonCmp,
             DefaultInputCmp,
             ServiceOrderCmp,
-            AddNewOrder
+            AddNewOrder,
+            OrderData
         },
 
         setup() {
             let addOrder = ref( false )
+            let orderModal = ref( false )
+
+            let currentOrder = ref( {} )
 
             const clickHandler = ( btnElem ) => {
                 console.log( btnElem );
@@ -54,16 +62,31 @@ import { controlsBtn } from '/src/assets/data/conf.js'
                     : addOrder.value = false
             }
 
+            const emitOrderData = ( data ) => {
+                orderModal.value = true
+                console.log( data );
+                currentOrder.value = data
+            }
+
             const closeNewModal = () => {
                 addOrder.value = false
+            }
+
+            const closeOrderModal = () => {
+                orderModal.value = false
             }
 
             return {
                 controlsBtn,
                 orderData,
                 addOrder,
+                orderModal,
                 clickHandler,
-                closeNewModal
+                closeNewModal,
+                closeOrderModal,
+                emitOrderData,
+                currentOrder
+                
             }
         }
     }

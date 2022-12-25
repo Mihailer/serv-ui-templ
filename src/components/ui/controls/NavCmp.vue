@@ -27,7 +27,6 @@ import TabCmp from '../TabCmp.vue';
             const active = ref( '1' )
 
             return {
-                // tabs,
                 active
             }
         }
@@ -42,7 +41,6 @@ import TabCmp from '../TabCmp.vue';
     height: 100%;
     width: 300px;
     margin: 0px 10px;
-    // background-color: rgb(150, 212, 122);
 
     @media screen and ( max-width: 540px ) {
         @include flexRow( space-between, center );

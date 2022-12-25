@@ -18,6 +18,5 @@ export const orderFieldSections = {
 
 export const controlsBtn = [
     'Нoвый заказ',
-    'Принять пoгарантии'
 ]
 
