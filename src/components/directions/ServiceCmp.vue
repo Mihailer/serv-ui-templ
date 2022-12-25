@@ -1,10 +1,14 @@
 <template>
     <div class="service-cmp">
+        <add-new-order v-if="addOrder"
+            @close-new-modal="closeNewModal" />
+
         <div class="service-cmp-control">
             <div class="backdrop">
                 <button-cmp v-for="( btn, btnIndex ) in controlsBtn" 
                     :key="btnIndex" 
-                    :name="btn" />
+                    :name="btn"
+                    @click="clickHandler( btn )"  />
             </div>
 
             <div class="backdrop">
@@ -22,160 +26,44 @@
 
 <script>
 import { ref } from 'vue'
+
 import ButtonCmp from '../ui/ButtonCmp.vue'
 import DefaultInputCmp from '../ui/DefaultInputCmp.vue';
+
+import AddNewOrder from '../modals/AddNewOrder.vue';
 import ServiceOrderCmp from './serviceCmp/ServiceOrderCmp.vue';
+
+import { orderData } from '/src/assets/data/mockData.js'
+import { controlsBtn } from '/src/assets/data/conf.js'
 
     export default {
         components: {
             ButtonCmp,
             DefaultInputCmp,
-            ServiceOrderCmp
+            ServiceOrderCmp,
+            AddNewOrder
         },
 
         setup() {
-            const controlsBtn = [
-                'Нoвый заказ',
-                'Принять пoгарантии'
-            ]
+            let addOrder = ref( false )
 
-            const orderData = ref([
-                {
-                    number: 1,
-                    date: '10.04.2022 13:44',
-                    status: 'Нoвый заказ',
-                    name: 'Писарев Михаил',
-                    telNumber: '8 978 654 54 42',
-                    serviceReason: 'Замена АКБ',
-                    manufacturer: 'Xiaomi',
-                    model: 'Redmi Note 7'
-                },
+            const clickHandler = ( btnElem ) => {
+                console.log( btnElem );
+                btnElem === 'Нoвый заказ' 
+                    ? addOrder.value = true 
+                    : addOrder.value = false
+            }
 
-                {
-                    number: 2,
-                    date: '10.04.2022 13:44',
-                    status: 'Нoвый заказ',
-                    name: 'Писарев Михаил',
-                    telNumber: '8 978 654 54 42',
-                    serviceReason: 'Замена дисплейнoгo мoдуля',
-                    manufacturer: 'Xiaomi',
-                    model: 'Redmi Note 7'
-                },
-
-                {
-                    number: 3,
-                    date: '10.04.2022 13:44',
-                    status: 'Нoвый заказ',
-                    name: 'Писарев Михаил',
-                    telNumber: '8 978 654 54 42',
-                    serviceReason: 'Замена АКБ',
-                    manufacturer: 'Xiaomi',
-                    model: 'Redmi Note 7'
-                },
-
-                {
-                    number: 4,
-                    date: '10.04.2022 13:44',
-                    status: 'Нoвый заказ',
-                    name: 'Писарев Михаил',
-                    telNumber: '8 978 654 54 42',
-                    serviceReason: 'Замена АКБ',
-                    manufacturer: 'Xiaomi',
-                    model: 'Redmi Note 7'
-                },
-
-                {
-                    number: 5,
-                    date: '10.04.2022 13:44',
-                    status: 'Нoвый заказ',
-                    name: 'Писарев Михаил',
-                    telNumber: '8 978 654 54 42',
-                    serviceReason: 'Замена АКБ',
-                    manufacturer: 'Xiaomi',
-                    model: 'Redmi Note 7'
-                },
-
-                {
-                    number: 6,
-                    date: '10.04.2022 13:44',
-                    status: 'Нoвый заказ',
-                    name: 'Писарев Михаил',
-                    telNumber: '8 978 654 54 42',
-                    serviceReason: 'Замена АКБ',
-                    manufacturer: 'Xiaomi',
-                    model: 'Redmi Note 7'
-                },
-
-                {
-                    number: 7,
-                    date: '10.04.2022 13:44',
-                    status: 'Нoвый заказ',
-                    name: 'Писарев Михаил',
-                    telNumber: '8 978 654 54 42',
-                    serviceReason: 'Замена АКБ',
-                    manufacturer: 'Xiaomi',
-                    model: 'Redmi Note 7'
-                },
-
-                {
-                    number: 8,
-                    date: '10.04.2022 13:44',
-                    status: 'Нoвый заказ',
-                    name: 'Писарев Михаил',
-                    telNumber: '8 978 654 54 42',
-                    serviceReason: 'Замена АКБ',
-                    manufacturer: 'Xiaomi',
-                    model: 'Redmi Note 7'
-                },
-
-                {
-                    number: 9,
-                    date: '10.04.2022 13:44',
-                    status: 'Нoвый заказ',
-                    name: 'Писарев Михаил',
-                    telNumber: '8 978 654 54 42',
-                    serviceReason: 'Замена АКБ',
-                    manufacturer: 'Xiaomi',
-                    model: 'Redmi Note 7'
-                },
-
-                {
-                    number: 10,
-                    date: '10.04.2022 13:44',
-                    status: 'Нoвый заказ',
-                    name: 'Писарев Михаил',
-                    telNumber: '8 978 654 54 42',
-                    serviceReason: 'Замена АКБ',
-                    manufacturer: 'Xiaomi',
-                    model: 'Redmi Note 7'
-                },
-
-                {
-                    number: 11,
-                    date: '10.04.2022 13:44',
-                    status: 'Нoвый заказ',
-                    name: 'Писарев Михаил',
-                    telNumber: '8 978 654 54 42',
-                    serviceReason: 'Замена АКБ',
-                    manufacturer: 'Xiaomi',
-                    model: 'Redmi Note 7'
-                },
-
-                {
-                    number: 12,
-                    date: '10.04.2022 13:44',
-                    status: 'Нoвый заказ',
-                    name: 'Писарев Михаил',
-                    telNumber: '8 978 654 54 42',
-                    serviceReason: 'Замена АКБ',
-                    manufacturer: 'Xiaomi',
-                    model: 'Redmi Note 7'
-                }
-            ])
+            const closeNewModal = () => {
+                addOrder.value = false
+            }
 
             return {
                 controlsBtn,
-                orderData
+                orderData,
+                addOrder,
+                clickHandler,
+                closeNewModal
             }
         }
     }
