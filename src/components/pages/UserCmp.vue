@@ -10,9 +10,9 @@
 
         <main class="user-cmp-main">
             <service-cmp v-if="directions[ 1 ]" />
-            <sales-cmp v-if="directions[ 2 ]" />
-            <warehouse-cmp v-if="directions[ 3 ]" />
-            <analytics-cmp v-if="directions[ 4 ]" />
+            <!-- <sales-cmp v-if="directions[ 2 ]" /> -->
+            <warehouse-cmp v-if="directions[ 2 ]" />
+            <analytics-cmp v-if="directions[ 3 ]" />
         </main>
     </div>
 </template>
@@ -23,7 +23,7 @@ import NavCmp from '../ui/controls/NavCmp.vue';
 import { tabs, applications } from '/src/assets/data/conf.js'
 
 import ServiceCmp from '../directions/ServiceCmp.vue';
-import SalesCmp from '../directions/SalesCmp.vue';
+// import SalesCmp from '../directions/SalesCmp.vue';
 import WarehouseCmp from '../directions/WarehouseCmp.vue';
 import AnalyticsCmp from '../directions/AnalyticsCmp.vue';
 
@@ -32,7 +32,7 @@ import AnalyticsCmp from '../directions/AnalyticsCmp.vue';
             NavCmp,
 
             ServiceCmp,
-            SalesCmp,
+            // SalesCmp,
             WarehouseCmp,
             AnalyticsCmp
         },  
@@ -49,9 +49,9 @@ import AnalyticsCmp from '../directions/AnalyticsCmp.vue';
         setup() {
             const directions = ref({
                 1: true,
+                // 2: false,
                 2: false,
-                3: false,
-                4: false
+                3: false
             })
 
             return  {

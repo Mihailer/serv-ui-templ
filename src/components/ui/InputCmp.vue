@@ -43,7 +43,7 @@ import { ref } from 'vue'
     &-warning-text {
         @include flexRow( flex-start, center );
         @include font( 10px );
-        color: $main-white;
+        color: $main-red;
         height: 10px;
         width: calc( 100% - 2px );
     }

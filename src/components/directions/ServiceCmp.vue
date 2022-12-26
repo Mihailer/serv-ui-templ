@@ -56,7 +56,7 @@ import { controlsBtn } from '/src/assets/data/conf.js'
             let currentOrder = ref( {} )
 
             const clickHandler = ( btnElem ) => {
-                console.log( btnElem );
+                // console.log( btnElem );
                 btnElem === 'Нoвый заказ' 
                     ? addOrder.value = true 
                     : addOrder.value = false
@@ -64,7 +64,7 @@ import { controlsBtn } from '/src/assets/data/conf.js'
 
             const emitOrderData = ( data ) => {
                 orderModal.value = true
-                console.log( data );
+                // console.log( data );
                 currentOrder.value = data
             }
 
