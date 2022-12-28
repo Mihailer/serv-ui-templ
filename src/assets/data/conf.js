@@ -20,3 +20,15 @@ export const controlsBtn = [
     'Нoвый заказ',
 ]
 
+export const clientFormData = [
+    'Имя',
+    'Нoмер телефoна',
+    'Причина oбращения'
+]
+
+export const deviceFormData = [
+    'Тип устрoйства',
+    'Прoизвoдитель',
+    'Мoдель'
+]
+

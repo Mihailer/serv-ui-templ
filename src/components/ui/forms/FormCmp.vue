@@ -9,7 +9,8 @@
             <input-cmp v-for="( field, fieldIndex ) in inputFields" 
                 :key="fieldIndex" 
                 :type="inputTypes[ fieldIndex ]"
-                :placeholder="field" />
+                :placeholder="field"
+                warningTxt="* Пoле не дoжнo быть пустым" />
         </div>
 
         <div class="form-cmp-butons-section">

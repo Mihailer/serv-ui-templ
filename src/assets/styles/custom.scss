@@ -58,6 +58,12 @@
     background-color: $main-color;
   }
 
+  .main-drop {
+    @include flexCol( center, flex-start );
+    margin: 3px;
+    background-color: $main-color;
+  }
+
   .flatdrop {
     @include flexRow( space-between, center );
     width: 100%;

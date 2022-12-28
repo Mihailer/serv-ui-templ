@@ -10,12 +10,21 @@
                         @click="$emit( 'close-new-modal' )">
                 </div>
             </div>
+
+            <div class="add-new-order-section-form">
+                <form-new-order />
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import FormNewOrder from '../ui/forms/FormNewOrder.vue';
+
     export default {
+        components: {
+            FormNewOrder
+        },
         
         setup() {
 
@@ -47,7 +56,6 @@
         &-close {
             @include flexRow( space-between, center );
             height: 40px;
-            // background-color: rgb(231, 110, 110);
 
             &-text {
                 @include font( 16px );
@@ -63,6 +71,12 @@
                 margin: 10px;
             }
         }
+        // -------------------------------------------------------- FORM NEW ORDER
+        &-form {
+            @include flexRow( center, center );
+            height: calc( 100% - 40px );
+        }
+        // -------------------------------------------------------- FORM NEW ORDER
     }
 }
 </style>

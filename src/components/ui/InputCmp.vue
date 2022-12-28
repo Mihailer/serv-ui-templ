@@ -9,19 +9,18 @@
 </template>
 
 <script>
-import { ref } from 'vue'
 
     export default {
         props: {
             type: { type: String, default: 'text' },
-            placeholder: { type: String, default: 'placeholder' }
+            placeholder: { type: String, default: 'placeholder' },
+            warningTxt: { type: String, default: '' }
         },
 
         setup() {
-            const warningTxt = ref( '* Предупреждение' )
-
+            
             return {
-                warningTxt
+
             }
         }
     }
@@ -46,6 +45,7 @@ import { ref } from 'vue'
         color: $main-red;
         height: 10px;
         width: calc( 100% - 2px );
+        margin: 0px 10px;
     }
 }
 

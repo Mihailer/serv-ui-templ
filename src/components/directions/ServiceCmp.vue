@@ -19,7 +19,7 @@
         </div>
 
         <div class="service-cmp-orders-section">
-            <service-order-cmp v-for="( order, orderIdx ) in orderData" 
+            <service-order-cmp v-for="( order, orderIdx ) in orderData.reverse()" 
                 :key="orderIdx" 
                 :order="order"
                 @emit-order-data="emitOrderData" />
